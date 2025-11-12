@@ -11,6 +11,8 @@ import TestimonialPage from "./components/Pages/TestimonialPage.vue";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import Register from "./views/Register.vue";
+import ConfirmPayment from "./components/Order/ConfirmPayment.vue";
+import PaymentLayout from "./components/PaymentLayout.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -38,6 +40,16 @@ const router = createRouter({
     {
       path: "/register",
       component: Register,
+    },
+    {
+      path: "/orders",
+      component: PaymentLayout,
+      children: [
+        {
+          path: "confirm",
+          component: ConfirmPayment,
+        },
+      ],
     },
   ],
 });
