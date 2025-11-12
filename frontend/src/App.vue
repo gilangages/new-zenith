@@ -1,13 +1,8 @@
-<script setup>
-import FooterSection from "./components/FooterSection.vue";
-import NavbarLandingPage from "./components/NavbarLandingPage.vue";
-</script>
+<script setup></script>
 
 <template>
   <div class="font-sans text-gray-800">
-    <!-- <NavbarLandingPage /> -->
     <RouterView />
-    <!-- <FooterSection /> -->
   </div>
 </template>
 
