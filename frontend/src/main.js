@@ -100,7 +100,7 @@ const router = createRouter({
     {
       path: "/admin",
       component: AdminLayout,
-      meta: { hideLayout: true, requiresAuth: true, role: 'admin' },
+      meta: { hideLayout: true, requiresAuth: true, role: "admin" },
       children: [
         { path: "", component: AdminDashboard },
         { path: "kelolaproduk", component: KelolaProduk },
@@ -145,9 +145,9 @@ const router = createRouter({
     { path: "/profile/edit", component: EditProfile },
     { path: "/riwayat", component: OrderHistory },
     {
-    path: '/riwayat/:id',
-    name: 'DetailPesanan',
-    component: DetailPesanan,
+      path: "/riwayat/:id",
+      name: "DetailPesanan",
+      component: DetailPesanan,
     },
     { path: "/cart", component: CartPage },
     { path: "/checkout", name: "checkout", component: CheckoutPage },
@@ -210,18 +210,18 @@ router.beforeEach((to, from, next) => {
   const role = localStorage.getItem("userRole");
 
   // 1. Cek apakah route butuh auth (Hanya Admin)
-  if (to.matched.some((record) => record.meta.role === 'admin')) {
-    if (!token || role !== 'admin') {
+  if (to.matched.some((record) => record.meta.role === "admin")) {
+    if (!token || role !== "admin") {
       // Tidak ada token atau bukan admin -> Redirect ke halaman 404
       return next({ path: "/404" });
     }
   }
 
   // 2. Cek apakah route khusus guest (Login/Register) tapi user sudah login
-  if (to.path === '/login' || to.path === '/register') {
+  if (to.path === "/login" || to.path === "/register") {
     if (token) {
-      if (role === 'admin') return next('/admin');
-      return next('/dashboard'); // Redirect ke dashboard jika sudah login
+      if (role === "admin") return next("/admin");
+      return next("/dashboard"); // Redirect ke dashboard jika sudah login
     }
   }
 
